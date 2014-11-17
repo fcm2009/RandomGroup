@@ -17,6 +17,7 @@ public class Parser
             while(fileReader.hasNextLine()) {
                 membersList.add(new Member(fileReader.nextLine()));
             }            
+            fileReader.close();
             return membersList;
     }
 }

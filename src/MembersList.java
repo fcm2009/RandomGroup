@@ -1,6 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import java.io.FileNotFoundException;
 
 /**
@@ -9,11 +8,11 @@ import java.io.FileNotFoundException;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class MemmbersList
+public class MembersList
 {
     private ArrayList<Member> membersList;
     
-    private MemmbersList(String fileName) throws FileNotFoundException {
+    public MembersList(String fileName) throws FileNotFoundException {
         membersList = Parser.parse(fileName);
     }
     

@@ -1,4 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import java.awt.Color;
 
 /**
  * each Member represents a person.
@@ -16,6 +17,12 @@ public class Member extends Actor implements Comparable
             throw new IllegalArgumentException();
         }
         this.name = name;
+        GreenfootImage nameImage = new GreenfootImage(name, 12, new Color(174, 167, 159), null);
+        getImage().drawImage(nameImage, 2, 78);
+    }
+    
+    public Member() {
+        this("a");
     }
     
     public void setName(String name) {
