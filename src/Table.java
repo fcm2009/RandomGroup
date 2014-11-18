@@ -11,7 +11,7 @@ import java.awt.Color;
 public class Table extends Actor
 {
     private int number;
-    private ArrayList<Member> membersList;
+    private MembersList membersList;
     
     /**
      * Act - do whatever the Table wants to do. This method is called whenever
@@ -46,11 +46,15 @@ public class Table extends Actor
         return this.number;
     }
     
-    public void setMembersList(ArrayList<Member> membersList) {
+    public void setMembersList(MembersList membersList) {
         if(membersList == null) {
             throw new IllegalArgumentException();
         }
         this.membersList = membersList;
+    }
+    
+    public void join(Member member) {
+        membersList.addMember(member);
     }
     
     public int compareTo(Object obj) {

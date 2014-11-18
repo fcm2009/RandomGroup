@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
  */
 public class miniWorld extends World
 {
-    MembersList memberslist;
+    MembersList membersList;
     JFileChooser filechooser;
 
     /**
@@ -22,15 +22,18 @@ public class miniWorld extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(1024, 768, 1);
+        
         String fileName = "/home/fcm2009/membersList";
         try{
-            memberslist = new MembersList(fileName);
+            membersList = new MembersList();
+            membersList.setMembersList(Parser.parse(fileName));
         }
         catch(FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "File Is Not Found or You Do Not Have Enough Privileges", "Erorr", JOptionPane.ERROR_MESSAGE);
         }
-    }
-
-    public void act() {
+        
+        int membersNumber = membersList.membersNumber();
+        int groupsNumber = 6;
+        
     }
 }

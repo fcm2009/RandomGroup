@@ -1,8 +1,18 @@
 #BlueJ class context
-comment0.params=fileName
-comment0.target=MembersList(java.lang.String)
+comment0.params=
+comment0.target=MembersList()
 comment1.params=membersList
 comment1.target=void\ setMembersList(java.util.ArrayList)
 comment2.params=
 comment2.target=java.util.ArrayList\ getMembersList()
-numComments=3
+comment3.params=member
+comment3.target=void\ addMember(Member)
+comment4.params=member
+comment4.target=void\ removeMember(Member)
+comment5.params=i
+comment5.target=void\ removeMember(int)
+comment6.params=i
+comment6.target=Member\ getMember(int)
+comment7.params=
+comment7.target=int\ membersNumber()
+numComments=8

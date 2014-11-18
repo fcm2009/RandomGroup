@@ -1,6 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
-import java.io.FileNotFoundException;
 
 /**
  * Write a description of class MemmbersList here.
@@ -12,8 +11,8 @@ public class MembersList
 {
     private ArrayList<Member> membersList;
     
-    public MembersList(String fileName) throws FileNotFoundException {
-        membersList = Parser.parse(fileName);
+    public MembersList() {
+        membersList = new ArrayList<Member>();
     }
     
     public void setMembersList(ArrayList<Member> membersList) {
@@ -22,5 +21,25 @@ public class MembersList
    
     public ArrayList<Member> getMembersList() {
         return membersList;
+    }
+    
+    public void addMember(Member member) {
+        membersList.add(member);
+    }
+    
+    public void removeMember(Member member) {
+        membersList.remove(member);
+    }
+    
+    public void removeMember(int i) {
+        membersList.remove(i);
+    }
+    
+    public Member getMember(int i) {
+        return membersList.get(i);
+    }
+    
+    public int membersNumber() {
+        return membersList.size();
     }
 }

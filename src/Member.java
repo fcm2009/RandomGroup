@@ -10,6 +10,7 @@ import java.awt.Color;
 public class Member extends Actor implements Comparable
 {
     String name;
+    Table table;
     
     public Member(String name) {
         name.trim();
@@ -35,10 +36,6 @@ public class Member extends Actor implements Comparable
     
     public String getName() {
         return this.name;
-    }
-    
-    public void joinTable(Table table) {
-        
     }
     
     /**
