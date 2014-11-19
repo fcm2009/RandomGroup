@@ -12,6 +12,8 @@ public class Table extends Actor
 {
     private int number;
     private MembersList membersList;
+    final static int width = 128;
+    final static int height = 128;
     
     /**
      * Act - do whatever the Table wants to do. This method is called whenever
@@ -22,6 +24,7 @@ public class Table extends Actor
             throw new IllegalArgumentException();
         }
         this.number = number;
+        
         GreenfootImage numberImage = new GreenfootImage("#" + number, 32, new Color(174, 167, 159), null);
         getImage().drawImage(numberImage, 35, 35);
     }
@@ -53,8 +56,12 @@ public class Table extends Actor
         this.membersList = membersList;
     }
     
-    public void join(Member member) {
-        membersList.addMember(member);
+    public static int getWCenter() {
+        return width / 2;
+    }
+    
+    public static int getHCenter() {
+        return height / 2;
     }
     
     public int compareTo(Object obj) {

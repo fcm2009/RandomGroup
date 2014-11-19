@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Write a description of class MemmbersList here.
@@ -37,6 +38,10 @@ public class MembersList
     
     public Member getMember(int i) {
         return membersList.get(i);
+    }
+    
+    public void shuffle() {
+        Collections.shuffle(membersList);
     }
     
     public int membersNumber() {

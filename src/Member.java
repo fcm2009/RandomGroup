@@ -9,8 +9,10 @@ import java.awt.Color;
  */
 public class Member extends Actor implements Comparable
 {
-    String name;
-    Table table;
+    private String name;
+    private Table table;
+    final static int width = 102;
+    final static int height = 140;
     
     public Member(String name) {
         name.trim();
@@ -18,6 +20,7 @@ public class Member extends Actor implements Comparable
             throw new IllegalArgumentException();
         }
         this.name = name;
+        
         GreenfootImage nameImage = new GreenfootImage(name, 12, new Color(174, 167, 159), null);
         getImage().drawImage(nameImage, 2, 78);
     }
@@ -36,6 +39,14 @@ public class Member extends Actor implements Comparable
     
     public String getName() {
         return this.name;
+    }
+    
+    public static int getWCenter() {
+        return width / 2;
+    }
+    
+    public static int getHCenter() {
+        return height / 2;
     }
     
     /**
