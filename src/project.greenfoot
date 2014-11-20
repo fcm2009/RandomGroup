@@ -1,11 +1,11 @@
 #Greenfoot properties
-#Thu Nov 20 07:07:46 AST 2014
+#Thu Nov 20 12:22:05 AST 2014
 target2.width=100
 target8.name=Movable
 target5.naviview.expanded=false
 dependency12.type=UsesDependency
-target7.showInterface=false
 target1.type=ClassTarget
+target7.showInterface=false
 mainWindow.height=1413
 target2.editor.y=744
 target6.typeParameters=
@@ -73,8 +73,8 @@ target5.editor.x=40
 mainWindow.y=27
 mainWindow.x=0
 target5.showInterface=false
-target8.showInterface=false
 dependency5.from=MembersList
+target8.showInterface=false
 target7.typeParameters=
 target2.name=miniWorld
 dependency9.from=miniWorld
