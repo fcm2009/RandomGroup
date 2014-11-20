@@ -8,34 +8,32 @@ import java.awt.Color;
  * @auther Mohammed Alshehry
  * @version 1.0
  */
-public class Table extends Actor
+public class Table extends Movable
 {
     private int number;
-    private MembersList membersList;
-    final static int width = 128;
-    final static int height = 128;
-    
+    private int seats;
+    private boolean avalible;
+
     /**
      * Act - do whatever the Table wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Table(int number) {
+    public Table(int number, boolean avalible) {
         if(number < 0){
             throw new IllegalArgumentException();
         }
         this.number = number;
-        
         GreenfootImage numberImage = new GreenfootImage("#" + number, 32, new Color(174, 167, 159), null);
         getImage().drawImage(numberImage, 35, 35);
+        this.avalible = avalible;
     }
     
+    public Table(int number) {
+        this(number, true);
+    }
+
     public Table() {
-        this(0);
-    }
-    
-    public void act() 
-    {
-        // Add your action code here.
+        this(0, false);
     }
     
     public void setNumber(int number) {
@@ -44,26 +42,35 @@ public class Table extends Actor
         }
         this.number = number;
     }
-    
+
     public int getNumber() {
         return this.number;
     }
     
-    public void setMembersList(MembersList membersList) {
-        if(membersList == null) {
-            throw new IllegalArgumentException();
-        }
-        this.membersList = membersList;
+    public void setAvalible(boolean avalible) {
+        this.avalible = avalible;
     }
-    
-    public static int getWCenter() {
-        return width / 2;
+
+    public boolean isAvalible() {
+        return this.avalible;
     }
-    
-    public static int getHCenter() {
-        return height / 2;
+
+    public void act() 
+    {
+        if(number == 1)
+            moveTo(300, 200);
+        else if(number == 2)
+            moveTo(800, 200);
+        else if(number == 3)
+            moveTo(1300, 200);
+        else if(number == 4)
+            moveTo(300, 550);
+        else if(number == 5)
+            moveTo(800, 550);
+        else if(number == 6)
+            moveTo(1300, 550);
     }
-    
+
     public int compareTo(Object obj) {
         if(obj != null) {
             if(obj instanceof Table) {

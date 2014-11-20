@@ -7,12 +7,10 @@ import java.awt.Color;
  * @author Mohammed Alshehry 
  * @version 1.0
  */
-public class Member extends Actor implements Comparable
+public class Member extends Movable implements Comparable
 {
     private String name;
     private Table table;
-    final static int width = 102;
-    final static int height = 140;
     
     public Member(String name) {
         name.trim();
@@ -20,9 +18,9 @@ public class Member extends Actor implements Comparable
             throw new IllegalArgumentException();
         }
         this.name = name;
-        
-        GreenfootImage nameImage = new GreenfootImage(name, 12, new Color(174, 167, 159), null);
-        getImage().drawImage(nameImage, 2, 78);
+        GreenfootImage nameImage = new GreenfootImage(name, 13, new Color(174, 167, 159), null);
+        GreenfootImage memberImage = getImage();
+        memberImage.drawImage(nameImage, (memberImage.getWidth() / 2) - (nameImage.getWidth() / 2), 78);
     }
     
     public Member() {
@@ -41,21 +39,22 @@ public class Member extends Actor implements Comparable
         return this.name;
     }
     
-    public static int getWCenter() {
-        return width / 2;
-    }
-    
-    public static int getHCenter() {
-        return height / 2;
-    }
-    
     /**
      * Act - do whatever the Member wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public void act() 
-    {
-        // Add your action code here.
+    public void act() {
+       int tableX = table.getX();
+       int tableY = table.getY();
+       int hGap = (this.getImage().getWidth() / 2) + (table.getImage().getWidth() / 2) + 10;
+       int vGap = (this.getImage().getHeight() / 2) + (table.getImage().getHeight() / 2) + 10;
+       int membersGap = 50;
+       
+       moveTo(tableX - hGap, tableY);
+    }
+    
+    public void join(Table table) {
+        this.table = table;
     }
     
     public int compareTo(Object obj) {

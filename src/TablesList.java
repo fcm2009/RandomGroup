@@ -1,52 +1,46 @@
+import greenfoot.*;
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * Write a description of class TablesList here.
  * 
- * @author Mohammed Alshehry
- * @version 1.0
+ * @author (your name) 
+ * @version (a version number or a date)
  */
 public class TablesList  
 {
     private ArrayList<Table> tablesList;
-    
-    public TablesList(int tablesNumber) {
+
+    /**
+     * Constructor for objects of class TablesList
+     */
+    public TablesList(int tables) {
         tablesList = new ArrayList<Table>();
-        for(int i = 1; i <= tablesNumber; i++) {
+        
+        for(int i = 1; i <= tables; i++) {
             tablesList.add(new Table(i));
         }
     }
     
-    public void setMembersList(ArrayList<Table> tablesList) {
-        this.tablesList = tablesList;
-    }
-   
-    public ArrayList<Table> getTablesList() {
-        return tablesList;
-    }
-    
-    public void addMember(Table table) {
-        tablesList.add(table);
-    }
-    
-    public void removeMember(Table table) {
-        tablesList.remove(table);
-    }
-    
-    public void removeMember(int i) {
-        tablesList.remove(i);
+    public int tablesNumber() {
+        return tablesList.size();
     }
     
     public Table getTable(int i) {
         return tablesList.get(i);
     }
     
-    public void shuffle() {
-        Collections.shuffle(tablesList);
-    }
-    
-    public int tablesNumber() {
-        return tablesList.size();
+    public void assignTable(MembersList membersList) {
+        int membersPerTable  = membersList.membersNumber() / this.tablesNumber();
+        int remainder  = membersList.membersNumber() % tablesNumber();
+        
+        for(int i = 0, j = 0; i < membersList.membersNumber(); i++) {
+            membersList.getMember(i).join(this.getTable(j));
+            if((i + 1) % membersPerTable == 0) {
+                j++;
+            }
+                
+        }
+            
     }
 }
