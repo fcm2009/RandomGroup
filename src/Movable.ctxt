@@ -1,4 +1,12 @@
 #BlueJ class context
-comment0.params=x\ y
-comment0.target=void\ moveTo(int,\ int)
-numComments=1
+comment0.params=distance
+comment0.target=void\ move(int)
+comment1.params=x\ y
+comment1.target=void\ moveTo(int,\ int)
+comment2.params=x\ y\ shift
+comment2.target=void\ moveTo(int,\ int,\ int)
+comment3.params=distance\ digree
+comment3.target=void\ move(int,\ int)
+comment4.params=x\ y
+comment4.target=boolean\ isOccupied(int,\ int)
+numComments=5

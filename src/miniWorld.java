@@ -29,6 +29,7 @@ public class miniWorld extends World
         
 
         int tablesNumber = 0;
+        int tablesNumberLimit = (int) Math.ceil(membersList.membersNumber() / 8);
         int flag  = 0;
         while(flag == 0) {
             try {
@@ -39,7 +40,9 @@ public class miniWorld extends World
                 }
                 else
                     tablesNumber = Integer.parseInt(tmp);
-                if(tablesNumber <= 6 && tablesNumber > 0)
+                if(tablesNumber < tablesNumberLimit)
+                    JOptionPane.showMessageDialog(null, "Number Tables Is Not Enough for The Number of Members. Remove Some Memebrs or Increase Number of Tables", "Erorr", JOptionPane.ERROR_MESSAGE);
+                else if(tablesNumber <= 6 && tablesNumber > 0)
                     flag = 1;
                 else
                     throw new IllegalArgumentException();
@@ -62,39 +65,63 @@ public class miniWorld extends World
         membersList.shuffle();
         
         TablesList tablesList = new TablesList(tablesNumber);
-
-        tablesList.assignTable(membersList);
-
+        
         this.addMembers(membersList);
         this.addTables(tablesList);
+
+        tablesList.setTable(membersList);
     }
 
     public void addTables(TablesList tablesList) {
         int hShift = 300;
-        int vShift = 65;
+        int vShift = 250;
         int tablesPerLine = 3;
         for(int i = 1; i <= tablesList.tablesNumber(); i++) {
             this.addObject(tablesList.getTable(i - 1), hShift, vShift);
             hShift += 500;
             if(i % tablesPerLine == 0) {
                 hShift = 300;
-                vShift = 200;
+                vShift += 400;
             }
         }
     }
 
     public void addMembers(MembersList membersList) {
-        int hShift = 130;
-        int vShift = 370;
+        int hShift = 120;
+        int vShift = 50;
         int memebrsPerLine = 10;
-        for(int i = 1; i <= membersList.membersNumber(); i++) {
-            this.addObject(membersList.getMember(i - 1), hShift, vShift);
+        int i = 0;
+        for(; i < memebrsPerLine; i++) {
+            this.addObject(membersList.getMember(i), hShift, vShift);
             hShift += 150;
-            if(i % memebrsPerLine == 0) {
-                hShift = 130;
-                vShift += 110;
-            }
         }
-
+        
+        hShift = 120;
+        vShift = 840;
+        for(; i < memebrsPerLine * 2; i++) {
+            this.addObject(membersList.getMember(i), hShift, vShift);
+            hShift += 150;
+        }
+        
+        hShift = 120;
+        vShift = 400;
+        for(; i < memebrsPerLine * 3; i++) {
+            this.addObject(membersList.getMember(i), hShift, vShift);
+            hShift += 150;
+        }
+        
+        hShift = 120;
+        vShift = 510;
+        for(; i < memebrsPerLine * 4 ; i++) {
+            this.addObject(membersList.getMember(i), hShift, vShift);
+            hShift += 150;
+        }
+        
+        hShift = 120;
+        vShift = 160;
+        for(; i < memebrsPerLine * 4.8; i++) {
+            this.addObject(membersList.getMember(i), hShift, vShift);
+            hShift += 150;
+        }
     }
 }

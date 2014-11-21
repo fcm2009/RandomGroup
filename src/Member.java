@@ -1,5 +1,6 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.awt.Color;
+import java.util.List;
 
 /**
  * each Member represents a person.
@@ -11,7 +12,9 @@ public class Member extends Movable implements Comparable
 {
     private String name;
     private Table table;
-    
+    Seat seat;
+    int degree;
+
     public Member(String name) {
         name.trim();
         if(name == null || name == "") {
@@ -22,11 +25,11 @@ public class Member extends Movable implements Comparable
         GreenfootImage memberImage = getImage();
         memberImage.drawImage(nameImage, (memberImage.getWidth() / 2) - (nameImage.getWidth() / 2), 78);
     }
-    
+
     public Member() {
         this("a");
     }
-    
+
     public void setName(String name) {
         name.trim();
         if(name == null || name == "") {
@@ -34,29 +37,35 @@ public class Member extends Movable implements Comparable
         }
         this.name = name;
     }
-    
+
     public String getName() {
         return this.name;
     }
     
+    public Seat getSeat() {
+        return seat;
+    }
+
     /**
      * Act - do whatever the Member wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act() {
-       int tableX = table.getX();
-       int tableY = table.getY();
-       int hGap = (this.getImage().getWidth() / 2) + (table.getImage().getWidth() / 2) + 10;
-       int vGap = (this.getImage().getHeight() / 2) + (table.getImage().getHeight() / 2) + 10;
-       int membersGap = 50;
-       
-       moveTo(tableX - hGap, tableY);
+        moveTo(seat.getX(), seat.getY());
+        
+        boolean xRounding = Math.abs(getX() - getSeat().getX()) <= 1;
+        boolean yRounding = Math.abs(getY() - getSeat().getY()) <= 1;
+        if(xRounding && yRounding) {
+            turn(getRotation() - 90);    
+            turnTowards(table.getX(), table.getY());
+        }
     }
-    
-    public void join(Table table) {
+
+    public void join(Table table, Seat seat) {
         this.table = table;
+        this.seat = seat;
     }
-    
+
     public int compareTo(Object obj) {
         if(obj != null) {
             if(obj instanceof Member) {

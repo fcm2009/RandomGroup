@@ -7,5 +7,5 @@ comment1.target=int\ tablesNumber()
 comment2.params=i
 comment2.target=Table\ getTable(int)
 comment3.params=membersList
-comment3.target=void\ assignTable(MembersList)
+comment3.target=void\ setTable(MembersList)
 numComments=4
